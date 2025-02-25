@@ -1,10 +1,11 @@
 # FLoc
 <div align= "left">
-    <h1> Code for Perspective from a Higher Dimension: Can 3D Geometric Priors Help Visual Floorplan Localization?
+    <h1> Code for the paper entitled "Perspective from a Higher Dimension: Can 3D Geometric Priors Help Visual Floorplan Localization?"
     </h1>
 </div>
 
 ![teaser](./Fig1.png "teaser")
+![teaser](./Fig2.png "teaser")
 
 ## Requirements
 To get started with the code, clone this repository and install the required dependencies:
@@ -19,10 +20,9 @@ conda activate floc
 Coming Soon...
 
 ## Download Dataset
-You can download the dataset from [here](https://libdrive.ethz.ch/index.php/s/dvKdj8WhmZuIaNw).\
+You can download the Gibson dataset from [here](https://libdrive.ethz.ch/index.php/s/dvKdj8WhmZuIaNw).\
 The released Gibson Floorplan Localization Dataset contains three datasets <b>gibson_f</b>, <b>gibson_g</b> (four views of forward and geneneral motions) and <b>gibson_t</b> (long trajectories) as described in the paper.\
 The data is collected in [Gibson Environment](https://github.com/StanfordVL/GibsonEnv).
-For more detailed data organization please refer to the README of the dataset.
 
 Place dataset under the data folder:
 ```
@@ -39,7 +39,7 @@ Place dataset under the data folder:
 │           ├── desdf
 │               ├── ...
 ```
-
+For the Structured3D dataset, please see the README in the s3d folder.
 ## Usage
 ### Evaluate the observation models
 ```
@@ -52,6 +52,7 @@ python eval_observation_gibson.py --net_type d --dataset gibson_f
 ```
 python eval_observation_s3d.py --net_type d --dataset Structured3D
 ```
+
 ### Evaluate the sequential filtering
 ```
 python eval_filtering.py --net_type <net-type> --traj_len <traj-len> --evol_path <evol-dir>
@@ -65,15 +66,17 @@ python eval_filtering.py --net_type comp --traj_len 100 --evol_path ./visualizat
 ```
 python train_xxx.py --net_type <net-type> --dataset <dataset>
 ```
-Specify the network type, and choose a dataset to train on, you can use gibson_f, gibson_g, or Structured3D, e.g.,```
-python train_s3d.py --net_type <net-type> --dataset <dataset>
-```
+
+Specify the network type, and choose a dataset to train on, you can use gibson_f, gibson_g, or Structured3D, e.g.,
 ```
 python train_gibson.py --net_type d --dataset gibson_f
 ```
+
 ```
 python train_s3d.py --net_type d --dataset Structured3D
 ```
 ## Acknowledgments
-
 This repository is implemented based on [F3Loc](https://github.com/felix-ch/f3loc).
+
+## Lincense
+This project is licensed under the MIT License.
