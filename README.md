@@ -1,10 +1,10 @@
 # FLoc
 <div align= "left">
-    <h1>
+    <h1> Code for Perspective from a Higher Dimension: Can 3D Geometric Priors Help Visual Floorplan Localization?
     </h1>
 </div>
 
-![teaser](./teaser.png "teaser")
+![teaser](./Fig1.png "teaser")
 
 ## Requirements
 To get started with the code, clone this repository and install the required dependencies:
@@ -16,15 +16,7 @@ conda activate floc
 ```
 
 ## Download Checkpoints
-You can download the model checkpoints from [here](https://drive.google.com/drive/folders/1-TDlM9hjeODizeebgfPx7zWez0XPYCKm?usp=sharing).\
-Place the logs folder under f3loc directory:
-```
-├── f3loc
-│   ├── logs
-│       ├── comp.ckpt   # checkpoint for the complementary network
-│       ├── mono.ckpt   # checkpoint for the monocular network
-│       ├── mv.ckpt     # checkpoint for the multi-view network
-```
+Coming Soon...
 
 ## Download Dataset
 You can download the dataset from [here](https://libdrive.ethz.ch/index.php/s/dvKdj8WhmZuIaNw).\
@@ -51,32 +43,37 @@ Place dataset under the data folder:
 ## Usage
 ### Evaluate the observation models
 ```
-python eval_observation.py --net_type <net-type> --dataset <dataset>
+python eval_observation_xxx.py --net_type <net-type> --dataset <dataset>
 ```
-Specify the network type, and choose a dataset to evaluate on, you can use gibson_f or gibson_g, e.g.,
+Specify the network type, and choose a dataset to evaluate on, you can use gibson_f, gibson_g, or Structured3D, e.g.,
 ```
-python eval_observation.py --net_type comp --dataset gibson_f
+python eval_observation_gibson.py --net_type d --dataset gibson_f
 ```
-Help message for arguments can be listed by
 ```
-python eval_observation.py -h
+python eval_observation_s3d.py --net_type d --dataset Structured3D
 ```
 ### Evaluate the sequential filtering
 ```
-python eval_filtering.py --net_type <net-type> --traj_len <traj-len> --evol_dir <evol-dir>
+python eval_filtering.py --net_type <net-type> --traj_len <traj-len> --evol_path <evol-dir>
 ```
 This evaluates the sequential filtering with the proposed histogram filter on gibson_t. Choose a network type and specify the trajectory length. Set --evol_dir to a directory if you wish to dump the figures of likelihood and posterior evolution. By default the figures are not saved. E.g.,
 ```
-python eval_filtering.py --net_type comp --traj_len 100 --evol_dir ./visualization
+python eval_filtering.py --net_type comp --traj_len 100 --evol_path ./visualization
 ```
-Check the usage of the arguments by
-```
-python eval_filtering.py -h
-```
+
 ### Training
-Our training script was specific for training on Azure ML. To ease customized
-training, we provide a lightning wrapper for each module, in which the training
-step and validation step are provided. To train the modules yourself, all you need
-to do is ``trainer.fit()``. A short introduction can be found here [LIGHTNING IN 15 MINUTES](https://lightning.ai/docs/pytorch/stable/starter/introduction.html).
-## Lincense
-This project is licensed under the MIT License.
+```
+python train_xxx.py --net_type <net-type> --dataset <dataset>
+```
+Specify the network type, and choose a dataset to train on, you can use gibson_f, gibson_g, or Structured3D, e.g.,```
+python train_s3d.py --net_type <net-type> --dataset <dataset>
+```
+```
+python train_gibson.py --net_type d --dataset gibson_f
+```
+```
+python train_s3d.py --net_type d --dataset Structured3D
+```
+## Acknowledgments
+
+This repository is implemented based on [F3Loc](https://github.com/felix-ch/f3loc).
