@@ -20,7 +20,7 @@ conda activate floc
 Coming Soon...
 
 ## Download Dataset
-You can download the Gibson dataset from [here](https://libdrive.ethz.ch/index.php/s/dvKdj8WhmZuIaNw).\
+You can download the Gibson dataset from [here](https://github.com/felix-ch/f3loc?tab=readme-ov-file#download-checkpoints).\
 The released Gibson Floorplan Localization Dataset contains three datasets <b>gibson_f</b>, <b>gibson_g</b> (four views of forward and geneneral motions) and <b>gibson_t</b> (long trajectories) as described in the paper.\
 The data is collected in [Gibson Environment](https://github.com/StanfordVL/GibsonEnv).
 
@@ -39,7 +39,8 @@ Place dataset under the data folder:
 │           ├── desdf
 │               ├── ...
 ```
-For the Structured3D dataset, please see the README in the s3d folder.
+For the Structured3D dataset, please see the README in the s3d and s3d/process folders.
+
 ## Usage
 ### Evaluate the observation models
 ```
