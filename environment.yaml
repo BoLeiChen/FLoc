@@ -1,0 +1,27 @@
+name: flodiff
+channels:
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+- pytorch
+- defaults
+dependencies:
+- python=3.8.5
+- cudatoolkit=10.
+- numpy
+- matplotlib
+- ipykernel
+- pip
+- pip:
+  - torch
+  - torchvision
+  - tqdm==4.64.0
+  - opencv-python==4.6.0.66
+  - h5py==3.6.0
+  - wandb==0.12.18
+  - efficientnet-pytorch
+  - warmup-scheduler
+  - diffusers==0.33.1
+  - lmdb 
+  - vit-pytorch
+  - positional-encodings

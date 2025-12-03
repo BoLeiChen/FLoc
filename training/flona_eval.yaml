@@ -1,0 +1,68 @@
+project_name: flona
+run_name: flona
+
+# training setup
+use_wandb: True # set to false if you don't want to log to wandb
+train: True
+batch_size: 64
+epochs: 400
+gpu_ids: [0] 
+num_workers: 12
+lr: 1e-4
+optimizer: adamw
+clipping: False #?
+max_norm: 1.
+scheduler: "cosine"
+warmup: True 
+warmup_epochs: 4
+cyclic_period: 10
+plateau_patience: 3
+plateau_factor: 0.5
+seed: 0
+obs_type: image
+goal_type: image
+ckpt_path: /path/to/checkpoints
+# load_run: "flona/flona_2024_07_04_17_09_37"
+# model params
+vision_encoder: flona_vint
+encoding_size: 256
+obs_encoder: efficientnet-b0
+attn_unet: False
+cond_predict_scale: False
+mha_num_attention_heads: 4
+mha_num_attention_layers: 4
+mha_ff_dim_factor: 4
+down_dims: [64, 128, 256]
+
+# diffusion model params
+num_diffusion_iters: 10
+
+# normalization for the action space
+normalize: True
+
+# context
+context_size: 3 # 5
+alpha: 1e-3
+
+# action output params
+len_traj_pred: 32
+learn_angle: False
+
+# dataset specific parameters
+image_size: [96, 96] # width, height
+datasets:
+  data_folder: /home/user/data/vis_nav/iGibson/igibson/dataset/
+  end_slack: 3 
+  goals_per_obs: 1
+  waypoint_spacing: 1
+
+
+# logging stuff
+## =0 turns off
+print_log_freq: 100 # in iterations
+image_log_freq: 50 #0 # in iterations
+num_images_log: 8 #0 
+pairwise_test_freq: 0 # in epochs
+eval_fraction: 0.25
+wandb_log_freq: 10 # in iterations
+eval_freq: 10 # in epochs
